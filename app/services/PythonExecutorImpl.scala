@@ -12,7 +12,8 @@ trait PythonExecutor {
 class PythonExecutorImpl extends PythonExecutor {
 
   override def generateVector(designation: String, categoryTitle: String):  Seq[String] = {
-    val line: String = "python3 /home/local/PRICEMINISTER/fatiha.reja/python/Semantic_Model_2_2.py \"" + designation + "\" \"" + categoryTitle + "\""
+    val line: String = "python3 /home/local/PRICEMINISTER/fatiha.reja/python/Semantic_Model_2_2.py \"" + designation
+    .replaceAll("\"", "")+ "\" \"" + categoryTitle.replaceAll("\"", "") + "\""
     System.out.println("[calling : " + line +" ]")
     val cmdLine: CommandLine = CommandLine.parse(line)
 
