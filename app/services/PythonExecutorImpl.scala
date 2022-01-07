@@ -26,8 +26,13 @@ class PythonExecutorImpl extends PythonExecutor {
     catch {
       case ioException: IOException =>
         println("error while executing script" + ioException.getMessage, ioException)
+        Thread.sleep(3000)
+        executor.execute(cmdLine)
       case error: Throwable =>
+
         println("error while executing script" + error.getMessage, error)
+        Thread.sleep(3000)
+        executor.execute(cmdLine)
     }
 
     val resp1: Seq[String] = outputStream.toString
